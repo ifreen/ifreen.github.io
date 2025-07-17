@@ -13,7 +13,7 @@
 }
 
 body {
-    виді: 'Roboto Mono', monospace;
+    font-family: 'Roboto Mono', monospace;
     background: #1a1a1a;
     color: #e6e6e6;
     line-height: 1.6;
@@ -154,7 +154,7 @@ nav {
 
 .hero .subtitle {
     font-size: 1.3rem;
-    color: #2c3e50;
+    color: darksalmon;
     margin-bottom: 2rem;
     animation: fadeIn 1s ease forwards;
 }
@@ -250,12 +250,6 @@ nav {
 }
 
 /* Education Grid */
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
 .course-list {
     display: flex;
     flex-wrap: wrap;
@@ -278,66 +272,90 @@ nav {
     border-color: rgba(52, 73, 94, 0.3);
 }
 
-/* Skills Word Cloud */
+/* Enhanced Skills Word Cloud */
 .skills-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 1.5rem;
-    background: rgba(44, 62, 80, 0.9);
-    border-radius: 8px;
-    border: 1px solid rgba(217, 217, 217, 0.2);
-    max-width: 900px;
+    position: relative;
+    height: 400px;
+    max-width: 800px;
     margin: 0 auto;
+    padding: 2rem;
+    background: rgba(44, 62, 80, 0.95);
+    border-radius: 12px;
+    border: 1px solid rgba(217, 217, 217, 0.3);
+    overflow: hidden;
+}
+
+.skills-cloud::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(217, 217, 217, 0.2), transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
 }
 
 .skill-tag {
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-    transition: all 0.3s ease;
+    position: absolute;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
     text-align: center;
     font-weight: 500;
+    z-index: 1;
+    transition: all 0.3s ease;
+    animation: orbit 20s linear infinite;
+    transform-origin: center center;
+    left: 50%;
+    top: 50%;
 }
 
 .skill-tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, rgba(217, 217, 217, 0.3), rgba(52, 73, 94, 0.3));
+    animation-play-state: paused;
 }
 
 .skill-tag.programming {
-    background: rgba(217, 217, 217, 0.1);
+    background: rgba(217, 217, 217, 0.2);
     color: #d9d9d9;
-    border: 1px solid rgba(217, 217, 217, 0.2);
+    border: 1px solid rgba(217, 217, 217, 0.4);
 }
 
 .skill-tag.aiml {
-    background: rgba(52, 73, 94, 0.1);
-    color: #2c3e50;
-    border: 1px solid rgba(52, 73, 94, 0.2);
+    background: rgba(52, 73, 94, 0.2);
+    color: #e6e6e6;
+    border: 1px solid rgba(52, 73, 94, 0.4);
 }
 
 .skill-tag.specialization {
-    background: rgba(184, 134, 11, 0.1);
+    background: rgba(184, 134, 11, 0.2);
     color: #b8860b;
-    border: 1px solid rgba(184, 134, 11, 0.2);
+    border: 1px solid rgba(184, 134, 11, 0.4);
 }
 
 .skill-tag.cloud {
-    background: rgba(160, 160, 160, 0.1);
-    color: #a0a0a0;
-    border: 1px solid rgba(160, 160, 160, 0.2);
+    background: rgba(160, 160, 160, 0.2);
+    color: #e6e6e6;
+    border: 1px solid rgba(160, 160, 160, 0.4);
 }
 
 .skill-tag.certification {
-    background: rgba(52, 73, 94, 0.1);
-    color: #34495e;
-    border: 1px solid rgba(52, 73, 94, 0.2);
+    background: rgba(52, 73, 94, 0.3);
+    color: #e6e6e6;
+    border: 1px solid rgba(52, 73, 94, 0.5);
 }
 
-.skill-tag.size-1 { font-size: 0.9rem; }
-.skill-tag.size-2 { font-size: 1rem; }
-.skill-tag.size-3 { font-size: 1.2rem; }
+.skill-tag.size-1 { font-size: 0.9rem; padding: 0.5rem 1rem; }
+.skill-tag.size-2 { font-size: 1.1rem; padding: 0.6rem 1.2rem; }
+.skill-tag.size-3 { font-size: 1.3rem; padding: 0.7rem 1.4rem; }
+
+@keyframes orbit {
+    from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+}
 
 /* Timeline */
 .timeline {
@@ -473,13 +491,39 @@ nav {
     }
 
     .skills-cloud {
-        gap: 0.6rem;
+        height: 300px;
         padding: 1.5rem;
     }
 
-    .skill-tag.size-1 { font-size: 0.8rem; }
-    .skill-tag.size-2 { font-size: 0.9rem; }
-    .skill-tag.size-3 { font-size: 1.1rem; }
+    .skill-tag {
+        animation-duration: 15s;
+    }
+
+    .skill-tag.size-1 { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+    .skill-tag.size-2 { font-size: 0.9rem; padding: 0.5rem 1rem; }
+    .skill-tag.size-3 { font-size: 1rem; padding: 0.6rem 1.2rem; }
+}
+
+@media (max-width: 480px) {
+    .skills-cloud {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        height: auto;
+        padding: 1rem;
+    }
+
+    .skills-cloud::before {
+        display: none;
+    }
+
+    .skill-tag {
+        position: relative;
+        animation: none;
+        transform: none;
+        margin: 0.5rem;
+        left: auto;
+        top: auto;
+    }
 }
 
 /* Scroll animations */
@@ -805,20 +849,20 @@ nav {
         <div class="container">
             <h2 class="section-title fade-in">Technical Skills & Certifications</h2>
             <div class="skills-cloud fade-in">
-                <span class="skill-tag programming size-3">Python</span>
-                <span class="skill-tag programming size-2">SQL</span>
-                <span class="skill-tag aiml size-3">PyTorch</span>
-                <span class="skill-tag aiml size-2">TensorFlow</span>
-                <span class="skill-tag aiml size-2">Transformers</span>
-                <span class="skill-tag specialization size-3">NLP</span>
-                <span class="skill-tag specialization size-3">Deep Learning</span>
-                <span class="skill-tag specialization size-2">Computer Vision</span>
-                <span class="skill-tag specialization size-3">LLM</span>
-                <span class="skill-tag specialization size-3">Generative AI</span>
-                <span class="skill-tag cloud size-1">AWS</span>
-                <span class="skill-tag cloud size-1">Git</span>
-                <span class="skill-tag certification size-2">Google TensorFlow Developer</span>
-                <span class="skill-tag certification size-2">AWS Cloud Practitioner</span>
+                <span class="skill-tag programming size-3" style="--radius: 120px; animation-duration: 18s;">Python</span>
+                <span class="skill-tag programming size-2" style="--radius: 140px; animation-duration: 22s; animation-delay: -2s;">SQL</span>
+                <span class="skill-tag aiml size-3" style="--radius: 130px; animation-duration: 20s; animation-delay: -4s;">PyTorch</span>
+                <span class="skill-tag aiml size-2" style="--radius: 150px; animation-duration: 24s; animation-delay: -6s;">TensorFlow</span>
+                <span class="skill-tag aiml size-2" style="--radius: 110px; animation-duration: 19s; animation-delay: -8s;">Transformers</span>
+                <span class="skill-tag specialization size-3" style="--radius: 160px; animation-duration: 21s; animation-delay: -10s;">NLP</span>
+                <span class="skill-tag specialization size-3" style="--radius: 120px; animation-duration: 23s; animation-delay: -12s;">Deep Learning</span>
+                <span class="skill-tag specialization size-2" style="--radius: 140px; animation-duration: 20s; animation-delay: -14s;">Computer Vision</span>
+                <span class="skill-tag specialization size-3" style="--radius: 130px; animation-duration: 22s; animation-delay: -16s;">LLM</span>
+                <span class="skill-tag specialization size-3" style="--radius: 150px; animation-duration: 19s; animation-delay: -18s;">Generative AI</span>
+                <span class="skill-tag cloud size-1" style="--radius: 110px; animation-duration: 21s; animation-delay: -20s;">AWS</span>
+                <span class="skill-tag cloud size-1" style="--radius: 160px; animation-duration: 23s; animation-delay: -22s;">Git</span>
+                <span class="skill-tag certification size-2" style="--radius: 120px; animation-duration: 20s; animation-delay: -24s;">Google TensorFlow Developer</span>
+                <span class="skill-tag certification size-2" style="--radius: 140px; animation-duration: 22s; animation-delay: -26s;">AWS Cloud Practitioner</span>
             </div>
         </div>
     </section>
@@ -947,6 +991,14 @@ nav {
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
+        });
+
+        // Dynamic positioning for skill tags
+        document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+            const totalTags = document.querySelectorAll('.skill-tag').length;
+            const angle = (index / totalTags) * 360;
+            const radius = parseFloat(tag.style.getPropertyValue('--radius'));
+            tag.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`;
         });
     </script>
 </body>
