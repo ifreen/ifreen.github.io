@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Ifreen - AI/ML Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: #f8fafc;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #64ffda 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 400;
+}
+
+.nav-links a:hover {
+    color: #64ffda;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #64ffda, #a855f7);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.hero-content {
+    z-index: 2;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.5s forwards;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    color: #64ffda;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1s forwards;
+}
+
+.hero .description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.5s forwards;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 2s forwards;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+.contact-item:hover {
+    background: rgba(168, 85, 247, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Styles */
+.section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #64ffda, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateY(0);
+    transition: transform 0.5s ease;
+}
+
+.section-title:hover {
+    transform: translateY(-5px) rotate(1deg);
+}
+
+/* Cards */
+.card {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-5px) rotate(1deg);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+}
+
+.card h3 {
+    color: #64ffda;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card .meta {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Education Grid */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.course-tag {
+    background: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    transition: all 0.3s ease;
+}
+
+.course-tag:hover {
+    background: rgba(168, 85, 247, 0.2);
+    border-color: rgba(168, 85, 247, 0.4);
+}
+
+/* Skills Word Cloud */
+.skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    backdrop-filter: blur(10px);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 400;
+}
+
+.skill-tag:hover {
+    transform: scale(1.15) rotate(3deg);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+/* Color palette for skill categories */
+.skill-tag.programming {
+    background: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+    border: 1px solid rgba(100, 255, 218, 0.4);
+}
+
+.skill-tag.aiml {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.skill-tag.specialization {
+    background: rgba(79, 195, 247, 0.2);
+    color: #4fc3f7;
+    border: 1px solid rgba(79, 195, 247, 0.4);
+}
+
+.skill-tag.cloud {
+    background: rgba(255, 245, 157, 0.2);
+    color: #fff59d;
+    border: 1px solid rgba(255, 245, 157, 0.4);
+}
+
+.skill-tag.certification {
+    background: rgba(236, 72, 153, 0.2);
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.4);
+}
+
+/* Size variations for emphasis */
+.skill-tag.size-1 { font-size: 1.0rem; }
+.skill-tag.size-2 { font-size: 1.3rem; }
+.skill-tag.size-3 { font-size: 1.6rem; }
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #64ffda, #a855f7);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin: 2rem 0;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 2rem;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: #64ffda;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: -10px;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: -10px;
+}
+
+/* Research & Projects Grid */
+.research-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .research-projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+.project-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+}
+
+.project-header {
+    padding: 1.5rem;
+    background: rgba(100, 255, 218, 0.1);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+/* Resume Button */
+.resume-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #64ffda, #a855f7);
+    color: #0f0f23;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+}
+
+.resume-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        left: 0;
+        padding-left: 3rem;
+        padding-right: 0;
+    }
+
+    .timeline-item::before {
+        left: 10px;
+    }
+
+    .skills-cloud {
+        gap: 0.8rem;
+        padding: 1.5rem;
+    }
+
+    .skill-tag {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .skill-tag.size-1 { font-size: 0.9rem; }
+    .skill-tag.size-2 { font-size: 1.1rem; }
+    .skill-tag.size-3 { font-size: 1.3rem; }
+}
+
+/* Scroll animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Floating elements */
+.floating-element {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-image-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-photo:hover {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+    transform: scale(1.05) rotate(2deg);
+}
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <nav class="container">
+            <div class="logo">Mohamed Ifreen</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#research-projects">Research & Projects</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#connect">Connect</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="floating-element" style="top: 10%; left: 10%;">🤖</div>
+        <div class="floating-element" style="top: 20%; right: 15%; animation-delay: -2s;">🧠</div>
+        <div class="floating-element" style="bottom: 30%; left: 20%; animation-delay: -4s;">⚡</div>
+
+        <div class="hero-content">
+            <div class="hero-image-wrapper">
+                <img src="images/ifreen.JPG" width="150" height="150" alt="Mohamed Ifreen" class="hero-photo">
+            </div>
+            <h1>Mohamed Ifreen</h1>
+            <p class="subtitle">AI/ML Engineer & Researcher</p>
+            <p class="description">
+                Passionate about advancing artificial intelligence through cutting-edge research and practical applications.
+                Currently pursuing MS in Artificial Intelligence at Boston University with a perfect 4.0 GPA,
+                specializing in NLP, Deep Learning, and Computer Vision.
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>ifreen@bu.edu</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+1 857 746 2249</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <a href="https://www.linkedin.com/in/mohamed-ifreen-a60634177/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; opacity: 0; animation: fadeInUp 1s ease 2.5s forwards;">
+                <a href="/resume.pdf" class="resume-btn" download>📄 Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="education-grid">
+                <div class="card fade-in">
+                    <h3>Master of Science in Artificial Intelligence</h3>
+                    <p class="meta">Boston University, Massachusetts, USA | Sep 2024 – Dec 2025 (Expected)</p>
+                    <p><strong>GPA: 4.0/4.0</strong></p>
+                    <h4 style="color: #a855f7; margin-top: 1.5rem;">Fall 2024 Coursework:</h4>
+                    <div class="course-list">
+                        <span class="course-tag">Intro to NLP (CS 505)</span>
+                        <span class="course-tag">Machine Learning (CS 542)</span>
+                        <span class="course-tag">Artificial Intelligence (CS 640)</span>
+                    </div>
+                    <h4 style="color: #a855f7; margin-top: 1.5rem;">Spring 2025 Coursework:</h4>
+                    <div class="course-list">
+                        <span class="course-tag">Tools for Data Science (CS 506)</span>
+                        <span class="course-tag">Deep Learning (CS 523)</span>
+                        <span class="course-tag">Image & Video Computing (CS 585)</span>
+                        <span class="course-tag">Directed Study (CS 995)</span>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <h3>Bachelor of Technology in Information Technology</h3>
+                    <p class="meta">SSN College of Engineering (Anna University), Chennai, India | Jun 2016 – Apr 2020</p>
+                    <p>Comprehensive undergraduate program covering computer science fundamentals, software engineering, and emerging technologies. Built a strong foundation in programming, algorithms, and system design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Research Assistant</h3>
+                        <p class="meta">Boston University GDP (DATA Team) | May 2025 – Present</p>
+                        <p>Working on advanced NLP models and deploying RAG (Retrieval-Augmented Generation) based solutions. Focused on improving information retrieval and generation capabilities for complex data systems.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Graduate Teaching Assistant</h3>
+                        <p class="meta">Boston University | Jan 2025 – May 2025</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Responsible for students of CS 542 (Machine Learning) and CS 541 (Applied Machine Learning)</li>
+                            <li>Teaching lab sessions and guiding students in ML concepts</li>
+                            <li>Coordinating exams and grading tasks efficiently</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Senior Machine Learning Engineer</h3>
+                        <p class="meta">Rapid Acceleration Partners, Chennai, India | Sep 2023 – Aug 2024</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Spearheaded deep learning projects, creating fast-tracked POCs, resulting in multi-million dollar contracts</li>
+                            <li>Led AI system development for Hussmann (Panasonic) to analyze product complaints, providing insights based on serial numbers; resulting in a <strong>$3 million project</strong></li>
+                            <li>Developed voice analysis models reducing processing time by <strong>100+ hours</strong></li>
+                            <li>Designed AI system for VirtueServe to map ICD codes and generate medical summaries, reducing scribing time by <strong>70%</strong> and making ICD mapping much more efficient</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Senior Data Engineer</h3>
+                        <p class="meta">LTIMindtree, Bangalore, India | Oct 2020 – Aug 2023</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Implemented NLP models for ticket mining and extraction reducing manual effort by <strong>60%</strong></li>
+                            <li>Developed ticket auto-tagging tool improving categorization time by <strong>40%</strong></li>
+                            <li>Built scalable data processing pipelines for enterprise-level applications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research-projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Research & Projects</h2>
+            <div class="research-projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Empirical Study of Visual Token Indicators</h3>
+                        <p class="meta">Boston University | Jan 2025 – May 2025</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Conducting comprehensive research on visual token indicators across multiple Vision-Language Models (VLMs) to improve model performance. Investigating redundancy in visual tokens and developing methods to enhance efficiency in multimodal AI systems.</p>
+                        <div class="course-list" style="margin-top: 1rem;">
+                            <span class="course-tag">Computer Vision</span>
+                            <span class="course-tag">VLMs</span>
+                            <span class="course-tag">Token Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>ITOps Auto Tagging System</h3>
+                        <p class="meta">LTIMindtree | Aug 2022 – Sep 2022</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Developed an ensemble ML model to automatically classify tickets into various categories, significantly reducing manual efforts in IT operations. Integrated Sentence Transformers for improved category relevance and accuracy.</p>
+                        <div class="course-list" style="margin-top: 1rem;">
+                            <span class="course-tag">Ensemble Learning</span>
+                            <span class="course-tag">NLP</span>
+                            <span class="course-tag">Classification</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Sentence Transformers Research</h3>
+                        <p class="meta">LTIMindtree | Aug 2022 – Sep 2022</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Recreation and deep analysis of Sentence Transformers paper to understand the role of cross-entropy loss in optimizing embedding spaces. Investigated the mechanisms behind embedding alignment and their impact on semantic similarity tasks.</p>
+                        <div class="course-list" style="margin-top: 1rem;">
+                            <span class="course-tag">NLP</span>
+                            <span class="course-tag">Embeddings</span>
+                            <span class="course-tag">Cross-Entropy Loss</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Video Captioning System</h3>
+                        <p class="meta">Anna University | Jul 2019 – May 2020</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Constructed an advanced video captioning system combining object detection with state-of-the-art models, achieving 75% accuracy in generating descriptive captions for video content.</p>
+                        <div class="course-list" style="margin-top: 1rem;">
+                            <span class="course-tag">Computer Vision</span>
+                            <span class="course-tag">Object Detection</span>
+                            <span class="course-tag">SOTA Models</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Awards & Achievements</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Best Poster Award - Minimizing Manipulations in LLM</h3>
+                        <p class="meta">Boston University | Dec 2024</p>
+                        <p>Received for research on minimizing manipulations in Large Language Models, focusing on fine-tuning, user prompt analysis, and validator LLM with a feedback loop, enhancing resilience to attacks and jailbreaking attempts.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Einstein Award</h3>
+                        <p class="meta">Rapid Acceleration Partners | 2023</p>
+                        <p>An exemplary award for bringing Generative AI and its state-of-the-art implementation to projects.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>NeuroHack’22 Winner</h3>
+                        <p class="meta">LTI & NAUT | 2022</p>
+                        <p>Won for developing an intelligent application for ticket tagging, solving the Intelligence Application Tickets Tagging Problem Statement.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Abacus 19 First Place</h3>
+                        <p class="meta">CEG, Chennai | 2019</p>
+                        <p>Secured first place in the On-Site Programming Contest (OPSC) event, demonstrating exceptional coding skills.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Prayatna 19 First Place</h3>
+                        <p class="meta">MIT, Chennai | 2019</p>
+                        <p>Achieved first place in a national-level inter-college technical (Python) symposium, showcasing proficiency in Python programming.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Competitive Programming Achievements</h3>
+                        <p class="meta">Various Platforms</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Specialist - Competitions</li>
+                            <li>6 Star - Problem Solving</li>
+                            <li>4 Star - Competitions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>Presentations Given</h3>
+                        <p class="meta">Various Institutions</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>"Fundamentals & Hands-on Application of Artificial Intelligence" at SSN College of Engineering</li>
+                            <li>"AI & ML Workshop" at Boston University</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3>IEEE Computational Intelligence Member</h3>
+                        <p class="meta">IEEE</p>
+                        <p>Active member of the IEEE Computational Intelligence Society, contributing to advancements in AI and related fields.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section" style="padding: 3rem 0;">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Skills & Certifications</h2>
+            <div class="skills-cloud fade-in">
+                <span class="skill-tag programming size-3">Python</span>
+                <span class="skill-tag programming size-2">SQL</span>
+                <span class="skill-tag aiml size-3">PyTorch</span>
+                <span class="skill-tag aiml size-2">TensorFlow</span>
+                <span class="skill-tag aiml size-2">Transformers</span>
+                <span class="skill-tag specialization size-3">NLP</span>
+                <span class="skill-tag specialization size-3">Deep Learning</span>
+                <span class="skill-tag specialization size-2">Computer Vision</span>
+                <span class="skill-tag specialization size-3">LLM</span>
+                <span class="skill-tag specialization size-3">Generative AI</span>
+                <span class="skill-tag cloud size-1">AWS</span>
+                <span class="skill-tag cloud size-1">Git</span>
+                <span class="skill-tag certification size-2">Google TensorFlow Developer</span>
+                <span class="skill-tag certification size-2">AWS Cloud Practitioner</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="connect" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Connect With Me</h2>
+            <div class="card fade-in" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h3>Let's Collaborate!</h3>
+                <p style="margin-bottom: 2rem;">Have a question about my work? Interested in collaboration? Or just want to chat about AI/ML? I'd love to hear from you!</p>
+                <div class="contact-info" style="justify-content: center; margin-bottom: 2rem;">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>ifreen@bu.edu</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://www.linkedin.com/in/mohamed-ifreen-a60634177/" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+                <div style="background: rgba(100, 255, 218, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(100, 255, 218, 0.3);">
+                    <p style="color: #64ffda; margin-bottom: 1rem; font-weight: bold;">Common Questions I Love to Discuss:</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+                        <span class="course-tag">🤖 "What's your favorite AI breakthrough recently?"</span>
+                        <span class="course-tag">🎯 "Tell me about your research approach"</span>
+                        <span class="course-tag">💡 "Any advice for breaking into AI/ML?"</span>
+                        <span class="course-tag">🚀 "What projects are you most excited about?"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ['#64ffda', '#a855f7'] },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#64ffda', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 26, 0.98)';
+            } else {
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
+            }
+        });
+
+        // Add typing effect to hero subtitle
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const subtitle = document.querySelector('.hero .subtitle');
+                typeWriter(subtitle, 'AI/ML Engineer & Researcher', 100);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
