@@ -42,50 +42,72 @@ body {
     z-index: 1000;
 }
 
-/* REPLACE your existing mobile CSS sections with this */
+
+/* REPLACE your mobile CSS with this improved version */
 
 @media (max-width: 768px) {
-    /* Completely reset the sidebar positioning */
     .side-menu {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
         top: auto;
-        transform: none; /* Remove the centering transform */
+        transform: none;
 
-        /* Change to horizontal layout */
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between; /* Changed from space-around */
         align-items: center;
 
-        /* Style as bottom bar */
         background: rgba(0, 0, 0, 0.95);
         border-top: 2px solid #00b7b7;
-        padding: 10px 5px;
-        gap: 0;
+        padding: 10px 8px;
+        gap: 2px;
         height: auto;
         width: 100%;
-
-        /* Remove any conflicting properties */
         border-radius: 0;
     }
 
     .side-menu a {
-        font-size: 0.7rem;
-        padding: 8px 4px;
+        font-size: 0.65rem;
+        padding: 8px 2px;
         text-align: center;
-        min-width: 0;
         flex: 1;
-        border-radius: 0;
+        border-radius: 4px;
+
+        /* Text truncation */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: calc(100vw / 7); /* Ensure equal width distribution */
+
+        /* Shortened labels for mobile */
+        position: relative;
+    }
+
+    /* Use shorter labels on mobile */
+    .side-menu a[href="#home"]:after { content: "Home"; }
+    .side-menu a[href="#education"]:after { content: "Edu"; }
+    .side-menu a[href="#experience"]:after { content: "Exp"; }
+    .side-menu a[href="#projects"]:after { content: "Work"; }
+    .side-menu a[href="#awards"]:after { content: "Awards"; }
+    .side-menu a[href="#skills"]:after { content: "Skills"; }
+    .side-menu a[href="#connect"]:after { content: "Contact"; }
+
+    /* Hide original text on mobile */
+    .side-menu a {
+        font-size: 0; /* Hide original text */
+    }
+
+    .side-menu a:after {
+        font-size: 0.65rem; /* Show shortened text */
+        color: inherit;
     }
 
     .side-menu a.active, .side-menu a:hover {
         background: rgba(0, 183, 183, 0.2);
-        transform: none; /* Remove scale transform */
+        transform: none;
     }
 
-    /* Add bottom padding to prevent overlap */
     .section {
         padding-bottom: 80px;
     }
@@ -97,12 +119,16 @@ body {
 
 @media (max-width: 480px) {
     .side-menu {
-        padding: 8px 2px;
+        padding: 8px 4px;
     }
 
     .side-menu a {
-        font-size: 0.65rem;
-        padding: 6px 2px;
+        padding: 6px 1px;
+        max-width: calc(100vw / 7 - 2px);
+    }
+
+    .side-menu a:after {
+        font-size: 0.6rem;
     }
 
     .section {
