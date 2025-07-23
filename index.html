@@ -362,7 +362,21 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #00f5ff;
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            animation: photoGlow 3s ease-in-out infinite alternate;
+        }
 
+        @keyframes photoGlow {
+            0% { box-shadow: 0 0 30px rgba(0, 245, 255, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.8); }
+        }
         .easter-egg:hover {
             background: rgba(0, 245, 255, 0.3);
             transform: scale(1.2);
@@ -376,6 +390,10 @@
             .story-card {
                 padding: 2rem;
                 margin: 1rem;
+            }
+            .profile-photo {
+                width: 140px;
+                height: 140px;
             }
 
             .story-title {
@@ -431,6 +449,10 @@
 
             .story-card {
                 padding: 1.5rem;
+            }
+            .profile-photo {
+                width: 120px;
+                height: 120px;
             }
 
             .story-title {
@@ -507,6 +529,7 @@
     </div>
 
     <div class="intro-screen" id="intro-screen">
+        <img src="images/ifreen.JPG" alt="Mohamed Ifreen" class="profile-photo" id="profile-photo">
         <div class="glitch-text">MOHAMED IFREEN</div>
         <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #888;">Loading AI innovation...</p>
         <button class="start-button" onclick="startJourney()">Start Journey</button>
@@ -515,20 +538,24 @@
     <div class="main-container">
         <div class="story-section active" data-section="0">
             <div class="story-card">
-                <h2 class="story-title">The Origin Story</h2>
+                <div class="profile-section">
+                    <div class="intro-text">
+                        <h2 class="story-title">The Origin Story</h2>
+                        <p style="margin-bottom: 20px;">
+                            Hey there! 👋 I'm Mohamed Ifreen, an AI/ML engineer driven by a curiosity to push the boundaries of what machines can achieve.
+                        </p>
+                    </div>
+                </div>
                 <div class="story-content">
                     <p style="margin-bottom: 20px;">
-                        Hey there! 👋 I’m Mohamed Ifreen, an AI/ML engineer driven by a curiosity to push the boundaries of what machines can achieve. My journey started with a simple question: how can technology solve problems as creatively as we do?
+                        My journey started with a simple question: how can technology solve problems as creatively as we do? With a knack for problem-solving and a soft spot for stargazing, I find inspiration in unraveling complex challenges—whether it's optimizing algorithms or pondering the mysteries of the universe.
                     </p>
                     <p style="margin-bottom: 20px;">
-                        With a knack for problem-solving and a soft spot for stargazing, I find inspiration in unraveling complex challenges—whether it’s optimizing algorithms or pondering the mysteries of the universe.
-                    </p>
-                    <p style="margin-bottom: 20px;">
-                        As an MS in AI student at Boston University (4.0 GPA, brag? I earned it! 😊), I’m honing my skills in NLP and deep learning to build AI that’s intuitive, impactful, and ready for the future.
+                        As an MS in AI student at Boston University (4.0 CGPA, brag? 😊), I'm honing my skills in NLP and deep learning to build AI that's intuitive, impactful, and ready for the future.
                     </p>
                     <div style="text-align: center; margin-top: 30px;">
                         <p style="color: #00f5ff; font-weight: 600;">What drives me?</p>
-                        <p>Crafting AI that’s as innovative as it is practical, transforming ideas into reality.</p>
+                        <p>Crafting AI that's as innovative as it is practical, transforming ideas into reality.</p>
                     </div>
                 </div>
             </div>
@@ -634,7 +661,7 @@
                     </p>
 
                     <div style="margin-bottom: 25px; padding: 20px; background: rgba(0, 245, 255, 0.05); border-left: 4px solid #00f5ff; border-radius: 5px;">
-                        <h4 style="color: #00f5ff; margin-bottom: 10px;">AI/ML Engineer, LTIMindtree (2020–2023)</h4>
+                        <h4 style="color: #00f5ff; margin-bottom: 10px;">Senior Data Engineer, LTIMindtree (2020–2023)</h4>
                         <p>Orchestrated end-to-end machine learning models for ticket text mining and attribute extraction, earning the Einstein Award for excellence. Designed NLP-powered systems that slashed manual effort by 60%. Built a TensorFlow-based Auto-Tagging Tool, boosting resolution and categorization speed by 40%.</p>
                     </div>
 
@@ -664,18 +691,18 @@
                     </p>
 
                     <div style="margin-bottom: 25px; padding: 20px; background: rgba(0, 245, 255, 0.05); border-left: 4px solid #00f5ff; border-radius: 5px;">
-                        <h4 style="color: #00f5ff; margin-bottom: 10px;">🎯 NeuroHack’22 Champion</h4>
-                        <p>Clinched NeuroHack’22 with an NLP-based ticket-tagging system using real-time text classification, cutting IT support response times by 40%.</p>
-                    </div>
-
-                    <div style="margin-bottom: 25px; padding: 20px; background: rgba(0, 245, 255, 0.05); border-left: 4px solid #00f5ff; border-radius: 5px;">
                         <h4 style="color: #00f5ff; margin-bottom: 10px;">💡 AI-Powered Automation</h4>
-                        <p>Fine-tuned deep learning models with PyTorch to automate complex workflows, saving over 100 hours of manual work and securing a million-dollar contract.</p>
+                        <p>Fine-tuned deep learning models to perform intelligent insights on relational databases, saving over 100 hours of manual work and securing a million-dollar contract.</p>
                     </div>
 
                     <div style="margin-bottom: 25px; padding: 20px; background: rgba(0, 245, 255, 0.05); border-left: 4px solid #00f5ff; border-radius: 5px;">
                         <h4 style="color: #00f5ff; margin-bottom: 10px;">🏥 Healthcare Efficiency</h4>
                         <p>Developed an NLP-driven ICD code mapping system with fine-tuned transformers, reducing medical scribing time by 70%.</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px; padding: 20px; background: rgba(0, 245, 255, 0.05); border-left: 4px solid #00f5ff; border-radius: 5px;">
+                        <h4 style="color: #00f5ff; margin-bottom: 10px;">🎯 NeuroHack’22 Winner</h4>
+                        <p>Clinched NeuroHack’22 with an NLP-based ticket-tagging system using real-time text classification, cutting IT support response times by 40%.</p>
                     </div>
 
                     <div style="text-align: center; margin-top: 30px; font-style: italic; color: #888;">
