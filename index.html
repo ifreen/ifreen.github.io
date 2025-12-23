@@ -21,6 +21,21 @@
             --gradient-secondary: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
         }
 
+        [data-theme="light"] {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f9fafb;
+            --card-bg: #f3f4f6;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --border-hover: #d1d5db;
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -33,6 +48,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .cursor-follower {
@@ -117,15 +133,47 @@
             transition: all 0.3s ease;
         }
 
+        [data-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
         .navbar.scrolled {
             background: rgba(10, 10, 10, 0.98);
             border-bottom-color: var(--border-hover);
+        }
+
+        [data-theme="light"] .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent-color);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+            background: rgba(59, 130, 246, 0.1);
         }
 
         .nav-links {
@@ -268,15 +316,19 @@
             align-items: center;
         }
 
-.profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--border-color);
-    transition: all 0.3s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .profile-image {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
 
         .profile-image:hover {
             border-color: var(--accent-color);
@@ -389,6 +441,10 @@
             border-color: var(--accent-color);
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .timeline-content:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .timeline-marker {
@@ -510,6 +566,10 @@
             border-color: var(--accent-color);
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .project-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .project-header {
@@ -881,14 +941,20 @@
 
     <nav class="navbar" id="navbar">
         <div class="logo">Mohamed Ifreen</div>
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
+        <div class="nav-right">
+            <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span>
+                <span id="theme-text">Dark</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section id="hero" class="section visible">
@@ -898,16 +964,16 @@
                     <h1>Mohamed Ifreen <small style="font-size: 1rem; color: var(--text-muted);">(He/Him)</small></h1>
                     <div class="subtitle">AI/ML Engineer & Researcher</div>
                     <div class="description">
-                        Crafting intelligent solutions at the intersection of machine learning, natural language processing, and real-world impact. Currently pursuing MS in AI at Boston University.
+                        Crafting intelligent solutions at the intersection of machine learning, natural language processing, and real-world impact. Applied Scientist Intern at Amazon. MS in AI from Boston University.
                     </div>
                     <div class="cta-buttons">
                         <a href="#projects" class="btn-primary">View Projects</a>
                         <a href="#contact" class="btn-secondary">Get In Touch</a>
                     </div>
-<div class="stats-container">
+                    <div class="stats-container">
                         <div class="stat-card">
-                            <div class="stat-number" style="font-size: 1.2rem; font-weight: 600;">Ex Sr. ML Engineer</div>
-                            <div class="stat-label">Previous Role</div>
+                            <div class="stat-number" style="font-size: 1.2rem; font-weight: 600;">Amazon</div>
+                            <div class="stat-label">Applied Scientist Intern</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-number" style="font-size: 1.2rem; font-weight: 600;">MS AI @BU</div>
@@ -939,30 +1005,30 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-grid">
-<div class="about-text">
-    <p style="margin-bottom: 1.5rem;">
-        I believe imagination is the key to any innovation. When faced with a challenge, I naturally think outside conventional boundaries rather than following established patterns. My approach starts with understanding the "why" behind any problem before jumping into technical solutions.
-    </p>
-    <p style="margin-bottom: 1.5rem;">
-        This curiosity-driven mindset has shaped my journey as an AI/ML engineer. I question assumptions, explore unconventional angles, and build solutions that don't just work—they push boundaries. Whether I'm optimizing language models for my research at Boston University or architecting deep learning systems, I focus on creating meaningful impact.
-    </p>
-    <p>
-        Beyond theoretical knowledge, I'm hands-on. I code, I experiment, I build. Having worked in R&D environments, I've learned that the most innovative solutions come from combining solid technical skills with creative problem-solving. That balance between imagination and execution is what drives my work in artificial intelligence.
-    </p>
-</div>
+                <div class="about-text">
+                    <p style="margin-bottom: 1.5rem;">
+                        I believe imagination is the key to any innovation. When faced with a challenge, I naturally think outside conventional boundaries rather than following established patterns. My approach starts with understanding the "why" behind any problem before jumping into technical solutions.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        This curiosity-driven mindset has shaped my journey as an AI/ML engineer. I question assumptions, explore unconventional angles, and build solutions that don't just work—they push boundaries. Whether I'm working on cutting-edge AI applications at Amazon, optimizing language models for my research at Boston University, or architecting deep learning systems, I focus on creating meaningful impact.
+                    </p>
+                    <p>
+                        Beyond theoretical knowledge, I'm hands-on. I code, I experiment, I build. Having worked in R&D environments across leading companies, I've learned that the most innovative solutions come from combining solid technical skills with creative problem-solving. That balance between imagination and execution is what drives my work in artificial intelligence.
+                    </p>
+                </div>
                 <div class="about-highlights">
                     <div class="highlight-item">
                         <div class="highlight-icon">🎓</div>
                         <div>
                             <strong>MS in AI, Boston University</strong><br>
-                            <span style="color: var(--text-muted);">4.0 CGPA, Expected Dec 2025</span>
+                            <span style="color: var(--text-muted);">4.0 CGPA, Expected May 2025</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <div class="highlight-icon">🔬</div>
                         <div>
-                            <strong>Research Assistant</strong><br>
-                            <span style="color: var(--text-muted);">BU GDP Lab - Architecting DL Solutions</span>
+                            <strong>Applied Scientist Intern</strong><br>
+                            <span style="color: var(--text-muted);">Amazon - AI/ML</span>
                         </div>
                     </div>
                     <div class="highlight-item">
@@ -993,9 +1059,24 @@
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
+                        <div class="timeline-title">Applied Scientist Intern</div>
+                        <div class="timeline-company">Amazon</div>
+                        <div class="timeline-duration">Dec 2025 - Present</div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Working on cutting-edge AI/ML applications and research initiatives.</li>
+                                <li>Contributing to innovative solutions in machine learning and artificial intelligence.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
                         <div class="timeline-title">Research Assistant</div>
                         <div class="timeline-company">Boston University - GDP Center (DATA Team)</div>
-                        <div class="timeline-duration">May 2025 - Present</div>
+                        <div class="timeline-duration">May 2025 - Dec 2025</div>
                         <div class="timeline-description">
                             <ul>
                                 <li>Architecting Deep Learning solutions for advancing policy research.</li>
@@ -1328,6 +1409,41 @@
     <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
 
     <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (newTheme === 'light') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+            } else {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+            }
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+            }
+        });
+
         // Smooth scrolling and section visibility
         const observerOptions = {
             threshold: 0.1,
